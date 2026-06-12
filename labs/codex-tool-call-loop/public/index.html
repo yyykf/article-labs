@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Tool Call Loop Lab</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Article Lab · Codex Tool Call</p>
+      <div class="hero-grid">
+        <div>
+          <h1>实时输出，不等于模型实时看见</h1>
+          <p class="lead">这个 lab 用真实 Responses API function calling 复现长命令的双路处理：UI 立即收到输出，模型只在工具调用返回时收到增量结果。</p>
+        </div>
+        <div class="status-panel">
+          <div class="status-row">
+            <span>Model</span>
+            <strong id="modelName">loading</strong>
+          </div>
+          <div class="status-row">
+            <span>Base URL</span>
+            <strong id="baseUrl">loading</strong>
+          </div>
+          <div class="status-row">
+            <span>API Key</span>
+            <strong id="keyStatus">loading</strong>
+          </div>
+          <div class="status-row">
+            <span>UI output pace</span>
+            <strong id="outputPace">loading</strong>
+          </div>
+          <div class="status-row">
+            <span>Tool yield window</span>
+            <strong id="yieldWindow">loading</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="startButton" type="button">Start agent loop</button>
+      <button id="clearButton" type="button" class="secondary">Clear</button>
+      <p id="runState">Idle</p>
+    </section>
+
+    <section class="workbench">
+      <section class="panel live">
+        <div class="panel-head">
+          <p>UI Event Stream</p>
+          <span>实时 stdout / stderr</span>
+        </div>
+        <pre id="liveOutput" class="terminal"></pre>
+      </section>
+
+      <section class="panel model">
+        <div class="panel-head">
+          <p>Model-visible Tool Results</p>
+          <span>只在工具调用返回时更新</span>
+        </div>
+        <div id="toolResults" class="result-list"></div>
+      </section>
+    </section>
+
+    <section class="panel trace">
+      <div class="panel-head">
+        <p>Agent Trace</p>
+        <span>Responses API loop</span>
+      </div>
+      <div id="agentTrace" class="trace-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>
