@@ -1,0 +1,19 @@
+{
+  "name": "@article-labs/codex-tool-call-loop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal reproduction of Codex-style long-running tool calls with separate UI and model output paths.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx src/server/index.ts",
+    "check": "tsc -p tsconfig.json --noEmit && node --check public/assets/app.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.3",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
